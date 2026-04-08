@@ -49,8 +49,8 @@ if ingredients_list:
 
     for fruit_chosen in ingredients_list:
       search_on_value = session.table("smoothies.public.fruit_options") \
-        .filter(col("fruit_name") == fruit_chosen) \
-        .select("search_on") \
+        .filter(col("FRUIT_NAME") == fruit_chosen) \
+        .select("SEARCH_ON") \
         .collect()[0]["SEARCH_ON"]
       ingredients_string += fruit_chosen + ''
       st.subheader(fruit_chosen + ' Nutrition Information')
