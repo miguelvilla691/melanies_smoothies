@@ -58,12 +58,12 @@ if ingredients_list:
     ingredients_string = ''
 
     for fruit_chosen in ingredients_list:
-      search_on_value = session.table("smoothies.public.fruit_options") \
-        .filter(col("FRUIT_NAME") == fruit_chosen) \
-        .select("SEARCH_ON") \
-        .collect()[0]["SEARCH_ON"]
+#      search_on_value = session.table("smoothies.public.fruit_options") \
+#        .filter(col("FRUIT_NAME") == fruit_chosen) \
+#        .select("SEARCH_ON") \
+#        .collect()[0]["SEARCH_ON"]
       ingredients_string += fruit_chosen + ''
       st.subheader(fruit_chosen + ' Nutrition Information')
-      st.write(fruit_chosen)
-      smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/" +search_on_value)
+#      st.write(fruit_chosen)
+      smoothiefroot_response = requests.get(f"https://my.smoothiefroot.com/api/fruit/{search_on}")
       sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
